@@ -6,12 +6,10 @@ services:
     container_name: llama-cpp
     restart: always
 
-    # ホストの ROCm をコンテナに渡す（Vega で GPU を使うために必須）
     volumes:
       - /opt/rocm:/opt/rocm
-      - /models:/models   # モデルを置く場所
+      - /models:/models
 
-    # GPU デバイスを渡す
     devices:
       - /dev/kfd
       - /dev/dri
