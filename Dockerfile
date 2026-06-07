@@ -16,8 +16,5 @@ RUN cmake -B build \
 
 RUN cmake --build build --config Release -j$(nproc)
 
-# モデルは /models に置く前提
-CMD ["./build/bin/llama-server",
-     "--model", "/models/model.gguf",
-     "--host", "0.0.0.0",
-     "--port", "8081"]
+# モデルは /models/model.gguf に置く前提
+CMD ["./build/bin/llama-server", "--model", "/models/model.gguf", "--host", "0.0.0.0", "--port", "8081"]
