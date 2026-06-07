@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  llama-cpp:
+    build: .
+    container_name: llama-cpp
+    restart: always
+    runtime: rocm
+    ports:
+      - "8081:8081"
+    volumes:
+      - llama-models:/models
+    command: >
+      --model /models/llama3-8b-q4_0.gguf
+      --gpu-layers 20
+      --host 0.0.0.0
+      --port 8081
+
+volumes:
+  llama-models:
